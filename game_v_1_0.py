@@ -5,8 +5,7 @@ import numpy as np
 # grid
 grid = np.full([8, 8], ".", dtype=str)
 
-# CHANGE MADE TO TESTING BRANCH!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-#  EVEN MORE CHANGES TO TESTING
+
 
 # FUNCTIONS--------------------------------------------------------------------------------------
 # check for boat overlap
