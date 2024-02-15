@@ -5,6 +5,8 @@ import numpy as np
 # grid
 grid = np.full([8, 8], ".", dtype=str)
 
+# CHANGE MADE TO TESTING BRANCH!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 # FUNCTIONS--------------------------------------------------------------------------------------
 # check for boat overlap
 def overlap(boat_coords, new_coords):
