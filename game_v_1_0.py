@@ -2,11 +2,8 @@
 import random
 import numpy as np
 
-# user input grid size (min = boat size and max = numpy/run display limitations)
-user_input_grid = int(input("Select grid size (min 5, max 18): "))
-
 # grid
-grid = np.full([user_input_grid, user_input_grid], ".", dtype=str)
+grid = np.full([8, 8], ".", dtype=str)
 
 
 # FUNCTIONS--------------------------------------------------------------------------------------
@@ -21,7 +18,7 @@ def overlap(boat_coords, new_coords):
 # create boat coords (start/end)
 def create_boat_coords(size, used_coords):
     while True:
-        x1, y1 = random.randint(0, user_input_grid - size), random.randint(0, user_input_grid - size)
+        x1, y1 = random.randint(0, 8 - size), random.randint(0, 8 - size)
         # boat direction (horizontal/vertical)
         if random.choice([True, False]):
             (x2, y2) = x1 + size - 1, y1
