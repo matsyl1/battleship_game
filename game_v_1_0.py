@@ -61,7 +61,7 @@ hits = []
 misses = []
 
 # strike logic (hit, miss, boat sunk message)
-for _ in range(15):
+for _ in range(64):
     strike = input("Select coord (x, y) you'd like to strike: ")
     strike = tuple(map(int, strike.split(',')))
     if strike in used_coords:
@@ -88,11 +88,3 @@ for _ in range(15):
     print(used_coords)
     print(hits)
     print(misses)
-
-
-
-
-
-
-
-
