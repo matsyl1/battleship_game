@@ -5,3 +5,4 @@
 4. Added code from most recent version "8x8_grid_4_boats_user_input" into "game_v_1_0" and will continue development in testing branch (15.02.24)
 5. Added boat generation function for better efficiency (avoids having to create one boat at the time). Opens up for future changes allowing user to set nr. of boats to be placed. Commit pushed to testing branch and merged with main (19.02.24)
 6. Added user input for grid size and nr of boats in testing branch (19.02.24)
+7. Added game logic looping thru user input coords/strikes until all boats hit. Removed user input for grid size and nr of boats.  
