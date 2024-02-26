@@ -2,12 +2,11 @@
 import random
 import numpy as np
 
-# NEW: user input for grid size (max 18*) and nr of boats (max 9*). *Numpy display limitations.
-grid_size = int(input("Select the grid size (max 18): "))
-nr_of_boats = int(input("Select the nr of boats (max 9): ")) + 1
-
 # grid
-grid = np.full([grid_size, grid_size], ".", dtype=str)
+grid = np.full([8, 8], ".", dtype=str)
+
+# empty list to keep track of all boat coords
+used_coords = []
 
 # FUNCTIONS--------------------------------------------------------------------------------------
 # check for boat overlap
@@ -21,7 +20,7 @@ def overlap(boat_coords, new_coords):
 # create boat coords (start/end)
 def create_boat_coords(size, used_coords):
     while True:
-        x1, y1 = random.randint(0, grid_size - size), random.randint(0, grid_size - size)
+        x1, y1 = random.randint(0, 8 - size), random.randint(0, 8 - size)
         # boat direction (horizontal/vertical)
         if random.choice([True, False]):
             (x2, y2) = x1 + size - 1, y1
@@ -33,12 +32,13 @@ def create_boat_coords(size, used_coords):
         if not overlap(used_coords, new_coords):
             return [(x, y) for x in range(x1, x2 + 1) for y in range(y1, y2 + 1)]
 
-# NEW: generate boats
+# generate boats
 def generate_boats():
     # empty list to track used coords
+    global used_coords
     used_coords = []
     # loop thru boats
-    for size in range(nr_of_boats):
+    for size in range(1, 6):
         boat = create_boat_coords(size, used_coords)
         for (x, y) in boat:
             grid[y, x] = size
@@ -46,5 +46,53 @@ def generate_boats():
         used_coords.extend(boat)
     print(grid)
     print(used_coords)
-
 generate_boats()
+
+# NEW: game logic-----------------------------------------------------------------------------------
+# store each boat coords in separate list
+boat1 = used_coords[:1]
+boat2 = used_coords[1:3]
+boat3 = used_coords[3:6]
+boat4 = used_coords[6:10]
+boat5 = used_coords[10:15]
+
+# store hits and misses in empty list and append with new strikes
+hits = []
+misses = []
+
+# strike logic (hit, miss, boat sunk message)
+for _ in range(15):
+    strike = input("Select coord (x, y) you'd like to strike: ")
+    strike = tuple(map(int, strike.split(',')))
+    if strike in used_coords:
+        print("Hit")
+        hits.append(strike)
+        if all(i in hits for i in boat1):
+            print("You've sunk boat 1")
+        if all(i in hits for i in boat2):
+            print("You've sunk boat 2")
+        if all(i in hits for i in boat3):
+            print("You've sunk boat 3")
+        if all(i in hits for i in boat4):
+            print("You've sunk boat 4")
+        if all(i in hits for i in boat5):
+            print("You've sunk boat 5")
+        if all(i in hits for i in used_coords):
+            print("Game over - you've sunk all boats!")
+            exit()
+    else:
+        print("Miss")
+        misses.append(strike)
+
+    print(grid)
+    print(used_coords)
+    print(hits)
+    print(misses)
+
+
+
+
+
+
+
+
