@@ -6,3 +6,4 @@
 5. Added boat generation function for better efficiency (avoids having to create one boat at the time). Opens up for future changes allowing user to set nr. of boats to be placed. Commit pushed to testing branch and merged with main (19.02.24)
 6. Added user input for grid size and nr of boats in testing branch (19.02.24)
 7. Added game logic looping thru user input coords/strikes until all boats hit. Removed user input for grid size and nr of boats. Commit pushed to testing branch and merged with main (26.02.24)
+8. Updated game logic. Loop thru user input coord strikes (max 64) until all boats sunk/game over. Added msgs for each boat being sunk. Added display for all hits/misses (04.03.24)
